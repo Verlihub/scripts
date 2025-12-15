@@ -1,0 +1,2 @@
+lua/*.lua text working-tree-encoding=cp1252 eol=crlf
+*.gitattributes eol=lf
