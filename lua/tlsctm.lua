@@ -161,7 +161,6 @@ function tagver (id, ve)
 
 	if
 		cli == "++" or -- dc++
-		cli == "PWDC++" or -- pwdc++
 		cli == "StrongDC++" or -- strongdc++
 		cli == "RSX++" or -- rsx++
 		cli == "gl++" or -- greylinkdc++
@@ -185,7 +184,18 @@ function tagver (id, ve)
 			v1, v2, v3 = mod:match ("^(%d+)%.(%d+)%.(%d+)$") -- 1.2.3
 		end
 
-	elseif cli == "ApexDC++s" then -- apexdc++ speedmod
+	elseif
+		cli == "PWDC++" -- pwdc++
+	then
+		v1, v2 = mod:match ("^(%d+)%.(%d+)$") -- 1.2
+
+		if not (v1 and v2) then
+			v1, v2, v3 = mod:match ("^(%d+)%.(%d+)%.(%d+)$") -- 1.2.3
+		end
+
+	elseif
+		cli == "ApexDC++s" -- apexdc++ speedmod
+	then
 		mod = mod:gsub ("^s", "")
 		v1 = mod:match ("^(%d+)$") -- 1
 
@@ -199,7 +209,9 @@ function tagver (id, ve)
 			v1, v2, v3 = mod:match ("^(%d+)%.(%d+)%.(%d+)$") -- 1.2.3
 		end
 
-	elseif cli == "StrgDC++" then -- strongdc++
+	elseif
+		cli == "StrgDC++" -- strongdc++
+	then
 		mod = mod:gsub ("P$", "")
 		v1, v2 = mod:match ("^(%d+)%.(%d+)$") -- 1.2
 
@@ -237,11 +249,15 @@ function tagver (id, ve)
 	then
 		v1, v2, v3, v4 = mod:match ("^(%d+)%.(%d+)%.(%d+)%.(%d+)$") -- 1.2.3.4
 
-	elseif cli == "zK++" then -- zk++
+	elseif
+		cli == "zK++" -- zk++
+	then
 		mod = mod:gsub ("d[0-9]+$", "")
 		v1, v2 = mod:match ("^(%d+)%.(%d+)$") -- 1.2
 
-	elseif cli == "ncdc" then -- ncdc
+	elseif
+		cli == "ncdc" -- ncdc
+	then
 		mod = mod:gsub ("%-[0-9a-z%-]+$", "")
 		v1, v2 = mod:match ("^(%d+)%.(%d+)$") -- 1.2
 
