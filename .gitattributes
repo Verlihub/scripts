@@ -1,2 +1,5 @@
-lua/*.lua text working-tree-encoding=cp1252 eol=crlf
+*.lua text working-tree-encoding=cp1252 eol=crlf
+*.py text working-tree-encoding=cp1252 eol=crlf
+*.po text working-tree-encoding=cp1252 eol=lf
+*_ru.lang text working-tree-encoding=cp1251 eol=crlf
 *.gitattributes eol=lf
