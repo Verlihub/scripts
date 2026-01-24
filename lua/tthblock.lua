@@ -1,5 +1,5 @@
--- TTH Block 0.0.3.5
--- © 2020-2022 RoLex
+-- TTH Block 0.0.3.7
+-- © 2020-2026 RoLex
 
 list = {}
 
@@ -383,7 +383,7 @@ end
 function getlist ()
 	local _, path = VH:GetVHCfgDir ()
 	path = path .. "/" .. conf.comm .. ".tth"
-	os.execute ("curl --get --location --max-redirs 1 --retry 2 --connect-timeout 5 --max-time 10 --user-agent \"Mozilla/5.0 (compatible; TTH Block/0.0.3.4; +https://ledo.feardc.net/other/)\" --silent --output \"" .. path .. "\" \"" .. conf.list .. "\"")
+	os.execute ("curl --get --location --max-redirs 1 --retry 2 --connect-timeout 5 --max-time 10 --user-agent \"Mozilla/5.0 (compatible; TTH Block/0.0.3.7; +https://ledo.feardc.net/other/)\" --silent --output \"" .. path .. "\" \"" .. conf.list .. "\"")
 	local file = io.open (path, "r")
 
 	if file then
@@ -391,11 +391,11 @@ function getlist ()
 		local temp, have = {}, false
 
 		for tth in io.lines (path) do
-			tth = tth:gsub ("\r", "") -- get rid of newline
-			tth = tth:gsub ("\n", "")
+			local lth = tth:gsub ("\r", "") -- get rid of newline
+			lth = lth:gsub ("\n", "")
 
-			if # tth == 39 then
-				temp [tth] = 1
+			if # lth == 39 then
+				temp [lth] = 1
 				have = true
 			end
 		end
