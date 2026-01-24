@@ -1,5 +1,5 @@
--- MaxTor 0.0.2.1
--- © 2021 RoLex
+-- MaxTor 0.0.2.2
+-- © 2021-2026 RoLex
 
 conf = {
 	comm = "maxtor",									-- list command
@@ -48,11 +48,11 @@ function VH_OnTimer (msec)
 			file:close ()
 
 			for addr in io.lines (path) do
-				addr = addr:gsub ("\r", "")
-				addr = addr:gsub ("\n", "")
+				local lddr = addr:gsub ("\r", "")
+				lddr = lddr:gsub ("\n", "")
 
-				if addr:match ("^%d+%.%d+%.%d+%.%d+$") then
-					temp [addr] = {}
+				if lddr:match ("^%d+%.%d+%.%d+%.%d+$") then
+					temp [lddr] = {}
 					have = true
 				end
 			end
