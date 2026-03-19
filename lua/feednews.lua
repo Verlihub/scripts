@@ -1,5 +1,5 @@
--- Feed News 0.8.5.1
--- © 2014-2023 RoLex
+-- Feed News 0.8.5.3
+-- © 2014-2026 RoLex
 
 conf = {
 	wait = 120, -- time in minutes
@@ -141,16 +141,16 @@ function VH_OnTimer (msec)
 	local news = {}
 
 	for name, url in pairs (link) do
-		if os.execute ("curl --get --location --max-redirs 1 --retry 2 --connect-timeout 5 --max-time 15 --user-agent \"Mozilla/5.0 (compatible; FeedNews/0.8.5.0; +https://ledo.feardc.net/other/)\" --silent --output \"" .. proc.file .. ".curl\" \"" .. url .. "\"") then
+		if os.execute ("curl --get --location --max-redirs 1 --retry 2 --connect-timeout 5 --max-time 15 --user-agent \"Mozilla/5.0 (compatible; FeedNews/0.8.5.3; +https://ledo.feardc.net/other/)\" --silent --output \"" .. proc.file .. ".curl\" \"" .. url .. "\"") then
 			local file = io.open (proc.file .. ".curl", "r")
 
 			if file then
-				local data = file:read ("*all")
+				local data = file:read ("*a")
 				file:close ()
 
 				if data and # data > 0 then
 					if # conf.char > 0 then
-						local chat = data:match ("<%?xml.- encoding=\"(.-)\".-%?>")
+						local chat = data:match ("<%?xml.- encoding=[\"'](.-)[\"'].-%?>")
 
 						if chat and # chat > 0 then
 							chat = chat:upper ()
@@ -164,7 +164,7 @@ function VH_OnTimer (msec)
 									local file = io.open (proc.file .. ".conv", "r")
 
 									if file then
-										local conv = file:read ("*all")
+										local conv = file:read ("*a")
 										file:close ()
 
 										if conv and # conv > 0 then
